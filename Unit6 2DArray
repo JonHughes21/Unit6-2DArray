@@ -1,0 +1,43 @@
+public class Unit62DArray {
+	public static void main(String[] args) {
+		int a = 1, b = 6;
+		int[][] arr=createArray(a,b);
+		
+		printArray(arr);
+		largestRow(arr);
+	}
+	public static int[][] createArray(int a, int b) {
+		int[][] arr = new int[3][4];
+		
+		for (int row = 0; row < arr.length; row++) {
+			for (int col = 0; col < arr[row].length; col++)
+				arr[row][col] = (int)(Math.random() * 21);
+		}
+		return arr;
+	}
+	public static void printArray(int[][] arr) {
+		for (int row = 0; row < arr.length; row++) {
+			for (int col = 0; col < arr[row].length; col++)
+				System.out.printf("%d ", arr[row][col]);
+			System.out.println();
+		}
+				
+	}
+	public static void largestRow(int[][] arr) {
+		int largest = Integer.MIN_VALUE;
+		int count = 0;
+		
+		for (int row = 0; row < arr.length; row++) {
+			int total = 0;
+			
+			for (int col = 0; col < arr[0].length; col++)
+				total += arr[row][col];
+		
+			if (total > largest) {
+			largest = total;
+			count = row;
+			}
+		}
+		System.out.printf("\nThe sum for row %d is %d", count + 1, largest);
+	}
+}
